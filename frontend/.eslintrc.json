@@ -17,6 +17,7 @@
     "plugins": [
         "react"
     ],
+    "root": true,
     "rules": {
         "semi": ["error", "never"],
         "no-console": "off",
