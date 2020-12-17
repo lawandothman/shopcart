@@ -15,6 +15,7 @@
         "no-console": "off",
         "quotes":["error", "single"],
         "no-underscore-dangle":"off",
-        "import/extensions": "off"
+        "import/extensions": "off",
+        "no-unused-vars":"off"
     }
 }
