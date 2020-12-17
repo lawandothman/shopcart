@@ -1,0 +1,27 @@
+{
+  "name": "shopcart",
+  "version": "1.0.0",
+  "description": "MERN eCommerce App ",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lawandothman/shopcart.git"
+  },
+  "author": "Lawand Othman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lawandothman/shopcart/issues"
+  },
+  "homepage": "https://github.com/lawandothman/shopcart#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
