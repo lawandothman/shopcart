@@ -24,6 +24,8 @@
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/jsx-one-expression-per-line": "off",
-        "jsx-quotes": ["error", "prefer-single"]
+        "jsx-quotes": ["error", "prefer-single"],
+        "no-underscore-dangle":"off",
+        "react/prop-types": "off"
     }
 }
