@@ -73,6 +73,6 @@ const OrderSchema = mongoose.Schema(
   },
 )
 
-const Order = mongoose.model('User', OrderSchema)
+const Order = mongoose.model('Order', OrderSchema)
 
 export default Order
