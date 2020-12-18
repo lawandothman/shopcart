@@ -28,6 +28,7 @@
         "jsx-quotes": ["error", "prefer-single"],
         "no-underscore-dangle":"off",
         "react/prop-types": "off",
-        "no-nested-ternary":"off"
+        "no-nested-ternary":"off",
+        "import/prefer-default-export": "off"
     }
 }
