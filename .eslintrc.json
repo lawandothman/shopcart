@@ -16,6 +16,8 @@
         "quotes":["error", "single"],
         "no-underscore-dangle":"off",
         "import/extensions": "off",
-        "no-unused-vars":"off"
+        "no-unused-vars":"off",
+        "import/prefer-default-export": "off",
+        "func-names":"off"
     }
 }
