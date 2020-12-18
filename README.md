@@ -18,6 +18,7 @@ Create a  .env file in the root and add the following
 NODE_ENV = development
 PORT = 5000
 MONGO_URI = <Your MongoDB URI>
+JWT_SECRET = <Generate a random JWT Secret Key>
 ```
 ### Install Dependencies 
 ```
