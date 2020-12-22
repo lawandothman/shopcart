@@ -6,12 +6,13 @@ eCommerce platform built with MERN stack.
 
 - Full featured shopping cart
 - Product reviews and ratings
-
+- Database seeder (users and products)
+- Checkout process 
 ## Usage
 
 ### Node
 
-Be sure to have Nodev14.6+ installed. 
+Be sure to have Node v14.6+ installed. 
 ### Env Variables 
 Create a  .env file in the root and add the following
 ```
@@ -20,27 +21,21 @@ PORT = 5000
 MONGO_URI = <Your MongoDB URI>
 JWT_SECRET = <Generate a random JWT Secret Key>
 ```
-### Install Dependencies 
-```
-npm install 
-cd frontend
-npm install
-```
-### Run 
-```
-# Run frontend (:3000) & backend (:5000)
-npm run dev
+## Install Dependencies 
+### `npm install`
+### `cd frontend`
+### `npm install`
 
-# Run backend only 
-npm run server
-```
+## Available Scripts 
+### `npm run dev`
+Runs the app in development mode. 
+Open [http://localhost:3000](http://localhost:3000) to view the frontend in your browser.
 
-### Seed Database 
-You can use the following commands to seed the database with some dummy data of users and products, as well as destroy all data. 
-```
-# Import Data
-npm run data:import
+The server starts on [http://localhost:5000](http://localhost:5000)
+### `npm run server`
+Starts the server.
 
-# Destroy data
-npm run data:destroy
-```
+### `npm run data:import`
+Seeds the database with sample data of products and users.
+### `npm run data:destroy`
+Destroys all data in the database. 
