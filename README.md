@@ -8,6 +8,8 @@ eCommerce platform built with MERN stack.
 - Product reviews and ratings
 - Database seeder (users and products)
 - Checkout process 
+- User Profile with orders
+- PayPal integration
 ## Usage
 
 ### Node
@@ -20,6 +22,7 @@ NODE_ENV = development
 PORT = 5000
 MONGO_URI = <Your MongoDB URI>
 JWT_SECRET = <Generate a random JWT Secret Key>
+PAYPAL_CLIENT_ID = <Your PayPal Client ID>
 ```
 ## Install Dependencies 
 ### `npm install`
