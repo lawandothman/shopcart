@@ -15,7 +15,7 @@ eCommerce platform built with MERN stack.
 Be sure to have Node v14.6+ installed. 
 ### Env Variables 
 Create a  .env file in the root and add the following
-```
+```dosini
 NODE_ENV = development
 PORT = 5000
 MONGO_URI = <Your MongoDB URI>
