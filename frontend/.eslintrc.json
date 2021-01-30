@@ -21,7 +21,7 @@
     "rules": {
         "semi": ["error", "never"],
         "no-console": "warn",
-        "no-unused-vars":"warn", 
+        "no-unused-vars":"warn",
         "quotes":["error", "single"],
         "react/react-in-jsx-scope": "off",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -32,6 +32,7 @@
         "no-nested-ternary":"off",
         "import/prefer-default-export": "off",
         "no-case-declarations": "off",
-        "react/no-array-index-key": "off"
+        "react/no-array-index-key": "off",
+        "no-alert":"off"
     }
 }
