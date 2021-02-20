@@ -85,16 +85,16 @@ const updateOrderToPaid = asyncHandler(async (req, res) => {
 })
 
 /**
- * @description     Update order to delivevered
- * @route           GET /api/orders/:id/deliver
+ * @description     Update order to dispatched
+ * @route           GET /api/orders/:id/dispatch
  * @access          Private/Admin
  */
-const updateOrderToDelivered = asyncHandler(async (req, res) => {
+const updateOrderToDispatched = asyncHandler(async (req, res) => {
   const order = await Order.findById(req.params.id)
 
   if (order) {
-    order.isDelivered = true
-    order.deliveredAt = Date.now()
+    order.isDispatched = true
+    order.dispatchedAt = Date.now()
 
     const updatedOrder = await order.save()
 
@@ -129,7 +129,7 @@ export {
   addOrderItems,
   getOrderById,
   updateOrderToPaid,
-  updateOrderToDelivered,
+  updateOrderToDispatched,
   getMyOrders,
   getOrders,
 }
