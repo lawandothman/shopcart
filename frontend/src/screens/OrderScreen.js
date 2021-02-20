@@ -31,7 +31,7 @@ const OrderScreen = ({ match, history }) => {
   const orderPay = useSelector((state) => state.orderPay)
   const { loading: loadingPay, success: succesPay } = orderPay
 
-  const orderDispatch = useSelector((state) => state.orderDispatc)
+  const orderDispatch = useSelector((state) => state.orderDispatch)
   const { loading: loadingDispatch, success: succesDispatch } = orderDispatch
 
   const userLogin = useSelector((state) => state.userLogin)
@@ -111,7 +111,7 @@ const OrderScreen = ({ match, history }) => {
                   Dispatched on {order.dispatchedAt}
                 </Message>
               ) : (
-                <Message variant='danger'>Awaiting Dispatch</Message>
+                <Message variant='danger'>Not Dispatched</Message>
               )}
             </ListGroup.Item>
 
