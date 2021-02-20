@@ -15,9 +15,9 @@ import {
   ORDER_LIST_REQUEST,
   ORDER_LIST_SUCCESS,
   ORDER_LIST_FAIL,
-  ORDER_DELIVER_REQUEST,
-  ORDER_DELIVER_SUCCESS,
-  ORDER_DELIVER_FAIL,
+  ORDER_DISPATCH_REQUEST,
+  ORDER_DISPATCH_FAIL,
+  ORDER_DISPATCH_SUCCESS,
 } from '../constants/orderConstants'
 
 export const createOrder = (order) => async (dispatch, getState) => {
@@ -88,7 +88,10 @@ export const getOrderDetails = (id) => async (dispatch, getState) => {
   }
 }
 
-export const payOrder = (orderId, paymentResult) => async (dispatch, getState) => {
+export const payOrder = (orderId, paymentResult) => async (
+  dispatch,
+  getState,
+) => {
   try {
     dispatch({
       type: ORDER_PAY_REQUEST,
@@ -105,7 +108,11 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
       },
     }
 
-    const { data } = await axios.put(`/api/orders/${orderId}/pay`, paymentResult, config)
+    const { data } = await axios.put(
+      `/api/orders/${orderId}/pay`,
+      paymentResult,
+      config,
+    )
 
     dispatch({
       type: ORDER_PAY_SUCCESS,
@@ -122,10 +129,10 @@ export const payOrder = (orderId, paymentResult) => async (dispatch, getState) =
   }
 }
 
-export const deliverOrder = (order) => async (dispatch, getState) => {
+export const dispatchOrder = (order) => async (dispatch, getState) => {
   try {
     dispatch({
-      type: ORDER_DELIVER_REQUEST,
+      type: ORDER_DISPATCH_REQUEST,
     })
 
     const {
@@ -138,15 +145,19 @@ export const deliverOrder = (order) => async (dispatch, getState) => {
       },
     }
 
-    const { data } = await axios.put(`/api/orders/${order._id}/deliver`, {}, config)
+    const { data } = await axios.put(
+      `/api/orders/${order._id}/dispatch`,
+      {},
+      config,
+    )
 
     dispatch({
-      type: ORDER_DELIVER_SUCCESS,
+      type: ORDER_DISPATCH_SUCCESS,
       payload: data,
     })
   } catch (error) {
     dispatch({
-      type: ORDER_DELIVER_FAIL,
+      type: ORDER_DISPATCH_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
