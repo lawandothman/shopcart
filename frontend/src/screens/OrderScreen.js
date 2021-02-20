@@ -11,11 +11,11 @@ import Loader from '../components/Loader'
 import {
   getOrderDetails,
   payOrder,
-  deliverOrder,
+  dispatchOrder,
 } from '../actions/orderActions'
 import {
   ORDER_PAY_RESET,
-  ORDER_DELIVER_RESET,
+  ORDER_DISPATCH_RESET,
 } from '../constants/orderConstants'
 
 const OrderScreen = ({ match, history }) => {
@@ -31,8 +31,8 @@ const OrderScreen = ({ match, history }) => {
   const orderPay = useSelector((state) => state.orderPay)
   const { loading: loadingPay, success: succesPay } = orderPay
 
-  const orderDeliver = useSelector((state) => state.orderDeliver)
-  const { loading: loadingDeliver, success: succesDeliver } = orderDeliver
+  const orderDispatch = useSelector((state) => state.orderDispatc)
+  const { loading: loadingDispatch, success: succesDispatch } = orderDispatch
 
   const userLogin = useSelector((state) => state.userLogin)
   const { userInfo } = userLogin
@@ -59,9 +59,9 @@ const OrderScreen = ({ match, history }) => {
       }
       document.body.appendChild(script)
     }
-    if (!order || succesPay || order._id !== orderId || succesDeliver) {
+    if (!order || succesPay || order._id !== orderId || succesDispatch) {
       dispatch({ type: ORDER_PAY_RESET })
-      dispatch({ type: ORDER_DELIVER_RESET })
+      dispatch({ type: ORDER_DISPATCH_RESET })
       dispatch(getOrderDetails(orderId))
     } else if (!order.isPaid) {
       if (!window.paypal) {
@@ -70,14 +70,14 @@ const OrderScreen = ({ match, history }) => {
         setSdkReady(true)
       }
     }
-  }, [dispatch, order, orderId, succesPay, succesDeliver])
+  }, [dispatch, order, orderId, succesPay, succesDispatch])
 
   const successPaymentHandler = (paymentResult) => {
     dispatch(payOrder(orderId, paymentResult))
   }
 
-  const deliverHandler = () => {
-    dispatch(deliverOrder(order))
+  const dispatchHandler = () => {
+    dispatch(dispatchOrder(order))
   }
 
   return loading ? (
@@ -106,12 +106,12 @@ const OrderScreen = ({ match, history }) => {
                 {order.shippingAddress.postCode},{' '}
                 {order.shippingAddress.country}
               </p>
-              {order.isDelivered ? (
+              {order.isDispatched ? (
                 <Message variant='success'>
-                  Delivered on {order.deliveredAt}
+                  Dispatched on {order.dispatchedAt}
                 </Message>
               ) : (
-                <Message variant='danger'>Not Delivered</Message>
+                <Message variant='danger'>Awaiting Dispatch</Message>
               )}
             </ListGroup.Item>
 
@@ -204,18 +204,18 @@ const OrderScreen = ({ match, history }) => {
                   )}
                 </ListGroup.Item>
               )}
-              {loadingDeliver && <Loader />}
+              {loadingDispatch && <Loader />}
               {userInfo
                 && userInfo.isAdmin
                 && order.isPaid
-                && !order.isDelivered && (
+                && !order.isDispatched && (
                   <ListGroup.Item>
                     <Button
                       type='button'
                       className='btn btn-block'
-                      onClick={deliverHandler}
+                      onClick={dispatchHandler}
                     >
-                      Mark as Delivered
+                      Mark as Dispatched
                     </Button>
                   </ListGroup.Item>
               )}
