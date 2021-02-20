@@ -116,7 +116,11 @@ const ProfileScreen = ({ history }) => {
       </Col>
       <Col md={9}>
         <h2>My orders</h2>
-        {loadingOrders ? <Loader /> : errorOrders ? <Message variant='danger'>{errorOrders}</Message> : (
+        {loadingOrders ? (
+          <Loader />
+        ) : errorOrders ? (
+          <Message variant='danger'>{errorOrders}</Message>
+        ) : (
           <Table striped bordered hover responsive className='table-sm'>
             <thead>
               <tr>
@@ -124,7 +128,7 @@ const ProfileScreen = ({ history }) => {
                 <th>DATE</th>
                 <th>TOTAL</th>
                 <th>PAID</th>
-                <th>DELIVERED</th>
+                <th>DISPATCHED</th>
                 <th> </th>
               </tr>
             </thead>
@@ -134,17 +138,25 @@ const ProfileScreen = ({ history }) => {
                   <td>{order._id}</td>
                   <td>{order.createdAt.substring(0, 10)}</td>
                   <td>£{order.totalPrice}</td>
-                  <td>{order.isPaid ? order.paidAt.substring(0, 10) : (
-                    <i className='fas fa-times' style={{ color: 'red' }} />
-                  )}
+                  <td>
+                    {order.isPaid ? (
+                      order.paidAt.substring(0, 10)
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }} />
+                    )}
                   </td>
-                  <td>{order.isDelivered ? order.deliveredAt.substring(0, 10) : (
-                    <i className='fas fa-times' style={{ color: 'red' }} />
-                  )}
+                  <td>
+                    {order.isDispatched ? (
+                      order.dispatchedAt.substring(0, 10)
+                    ) : (
+                      <i className='fas fa-times' style={{ color: 'red' }} />
+                    )}
                   </td>
                   <td>
                     <LinkContainer to={`/order/${order._id}`}>
-                      <Button className='btn-sm' variant='light'>Details</Button>
+                      <Button className='btn-sm' variant='light'>
+                        Details
+                      </Button>
                     </LinkContainer>
                   </td>
                 </tr>
