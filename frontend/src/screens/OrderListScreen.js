@@ -39,7 +39,7 @@ const OrderListScreen = ({ history }) => {
               <th>DATE</th>
               <th>TOTAL</th>
               <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>DISPATCHED</th>
               <th> </th>
             </tr>
           </thead>
@@ -58,9 +58,8 @@ const OrderListScreen = ({ history }) => {
                   )}
                 </td>
                 <td>
-                  {console.log(order)}
-                  {order.isDelivered ? (
-                    order.deliveredAt.substring(0, 10)
+                  {order.isDispatched ? (
+                    order.dispatchedAt.substring(0, 10)
                   ) : (
                     <i className='fas fa-times' style={{ color: 'red' }} />
                   )}
