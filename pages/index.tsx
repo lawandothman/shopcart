@@ -1,9 +1,16 @@
 import type { NextPage } from 'next'
+import { Product } from 'components/Product'
+import products from 'data/products'
 
 const Home: NextPage = () => {
   return (
-    <div className='container min-h-[80vh] mx-auto'>
-      <h1 className='text-3xl'>Welcome to Shopcart</h1>
+    <div>
+      <h1 className='py-10 text-5xl'>Latest Products</h1>
+      <div className='flex flex-wrap gap-8'>
+        {products.map((product) => (
+          <Product key={product._id} product={product} />
+        ))}
+      </div>
     </div>
   )
 }
