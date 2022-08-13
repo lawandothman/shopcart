@@ -1,12 +1,12 @@
 import { NextPage } from 'next'
-import products from 'data/products'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import { Rating } from 'components/Rating'
+import { trpc } from 'utils/trpc'
 
 const Product: NextPage = () => {
   const id = useRouter().query.id as string
-  const product = products.find((p) => p._id === id)
+  const { data: product, error } = trpc.useQuery(['product', id])
 
   if (!product) {
     return <div>Product not found</div>
@@ -32,7 +32,7 @@ const Product: NextPage = () => {
           <p>{product.description}</p>
           <p
             className={` text-2xl ${
-              product.countInStock > 0 ? 'text-green-500' : 'text-red-400'
+              product.countInStock > 0 ? 'text-green-500' : 'text-red-500'
             }`}
           >
             {product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
