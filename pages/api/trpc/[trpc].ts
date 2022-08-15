@@ -16,7 +16,7 @@ export const appRouter = trpc
   .query('product', {
     input: z.string(),
     resolve({ input }) {
-      return prisma.product.findFirst({
+      return prisma.product.findUnique({
         where: {
           id: input,
         },
