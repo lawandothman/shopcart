@@ -1,7 +1,7 @@
+import { Product as IProduct } from '@prisma/client'
 import { Rating } from 'components/Rating'
 import Image from 'next/image'
 import Link from 'next/link'
-import { IProduct } from 'types'
 
 interface ProductProps {
   product: IProduct
@@ -9,7 +9,7 @@ interface ProductProps {
 
 export const Product: React.FC<ProductProps> = ({ product }) => {
   return (
-    <Link href={`/product/${product._id}`}>
+    <Link href={`/product/${product.id}`}>
       <div className='max-w-sm border border-gray-200 rounded-lg shadow-md cursor-pointer'>
         <Image
           className='rounded-t-lg'

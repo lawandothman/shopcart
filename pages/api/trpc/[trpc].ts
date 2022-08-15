@@ -2,18 +2,25 @@ import * as trpc from '@trpc/server'
 import * as trpcNext from '@trpc/server/adapters/next'
 import products from 'data/products'
 import { z } from 'zod'
+import { PrismaClient } from '@prisma/client'
+
+const prisma = new PrismaClient()
 
 export const appRouter = trpc
   .router()
   .query('products', {
     resolve() {
-      return products
+      return prisma.product.findMany()
     },
   })
   .query('product', {
     input: z.string(),
     resolve({ input }) {
-      return products.find((p) => p._id === input)
+      return prisma.product.findFirst({
+        where: {
+          id: input,
+        },
+      })
     },
   })
 
