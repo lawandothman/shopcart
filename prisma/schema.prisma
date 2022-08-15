@@ -79,14 +79,14 @@ model Product {
   brand        String
   category     String
   description  String
-  rating       Int         @default(0)
+  rating       Float       @default(0.0)
   numReviews   Int         @default(0)
-  price        Int         @default(0)
+  price        Float       @default(0.0)
   countInStock Int         @default(0)
-  createdAt    DateTime
+  createdAt    DateTime?
   updatedAt    DateTime    @updatedAt
-  userId       String      @db.ObjectId
-  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String?     @db.ObjectId
+  user         User?       @relation(fields: [userId], references: [id], onDelete: Cascade)
   reviews      Review[]
   OrderItem    OrderItem[]
 }
@@ -94,14 +94,12 @@ model Product {
 model Order {
   id             String          @id @default(auto()) @map("_id") @db.ObjectId
   userId         String          @db.ObjectId
-  quantity       Int             @default(0)
-  price          Int             @default(0)
   shippinAddress ShippingAddress
   paymentMethod  String
   paymentResult  PaymentResult
-  taxPrice       Int             @default(0)
-  shippingPrice  Int             @default(0)
-  totalPrice     Int             @default(0)
+  taxPrice       Float           @default(0.0)
+  shippingPrice  Float           @default(0.0)
+  totalPrice     Float           @default(0.0)
   isPaid         Boolean         @default(false)
   paidAt         DateTime?
   isDispatched   Boolean         @default(false)
