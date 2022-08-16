@@ -3,7 +3,8 @@ import { Product } from 'components/Product'
 import { trpc } from 'utils/trpc'
 
 const Home: NextPage = () => {
-  const { data: products } = trpc.useQuery(['products'])
+  const { data: products } = trpc.useQuery(['products.getAll'])
+  console.log(products)
 
   return (
     <div>

@@ -6,7 +6,7 @@ import { trpc } from 'utils/trpc'
 
 const Product: NextPage = () => {
   const id = useRouter().query.id as string
-  const { data: product } = trpc.useQuery(['product', id])
+  const { data: product } = trpc.useQuery(['products.getById', id])
 
   if (!product) {
     return <div>Product not found</div>
