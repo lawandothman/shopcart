@@ -1,6 +1,5 @@
 import * as trpc from '@trpc/server'
 import * as trpcNext from '@trpc/server/adapters/next'
-import products from 'data/products'
 import { z } from 'zod'
 import { PrismaClient } from '@prisma/client'
 
@@ -9,14 +8,14 @@ const prisma = new PrismaClient()
 export const appRouter = trpc
   .router()
   .query('products', {
-    resolve() {
-      return prisma.product.findMany()
+    async resolve() {
+      return await prisma.product.findMany()
     },
   })
   .query('product', {
     input: z.string(),
-    resolve({ input }) {
-      return prisma.product.findUnique({
+    async resolve({ input }) {
+      return await prisma.product.findUnique({
         where: {
           id: input,
         },
