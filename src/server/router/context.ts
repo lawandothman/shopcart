@@ -12,13 +12,13 @@ export const createContext = async (
   const req = opts?.req;
   const res = opts?.res;
 
-  const session =
-    req && res && (await getServerSession(req, res, nextAuthOptions));
+  // const session =
+  //   req && res && (await getServerSession(req, res, nextAuthOptions));
 
   return {
     req,
     res,
-    session,
+    // session,
     prisma,
   };
 };
