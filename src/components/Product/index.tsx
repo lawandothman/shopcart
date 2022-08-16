@@ -1,5 +1,5 @@
 import { Product as IProduct } from '@prisma/client'
-import { Rating } from 'components/Rating'
+import { Rating } from 'components'
 import Image from 'next/image'
 import Link from 'next/link'
 

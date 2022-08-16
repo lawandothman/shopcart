@@ -1,10 +1,17 @@
 import type { NextPage } from 'next'
-import { Product } from 'components/Product'
+import { Loader, Product } from 'components'
 import { trpc } from 'utils/trpc'
 
 const Home: NextPage = () => {
-  const { data: products } = trpc.useQuery(['products.getAll'])
-  console.log(products)
+  const { data: products, isLoading } = trpc.useQuery(['products.getAll'])
+
+  if (isLoading) {
+    return (
+      <div className='flex items-center justify-center  h-[80vh]'>
+        <Loader />
+      </div>
+    )
+  }
 
   return (
     <div>
