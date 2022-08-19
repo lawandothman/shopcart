@@ -10,7 +10,7 @@ interface ProductProps {
 export const Product: React.FC<ProductProps> = ({ product }) => {
   return (
     <Link href={`/product/${product.id}`}>
-      <div className='max-w-sm border border-gray-200 rounded-lg shadow-md cursor-pointer'>
+      <div className='max-w-md border border-gray-200 rounded-lg shadow-md cursor-pointer'>
         <Image
           className='rounded-t-lg'
           src={product.image}
@@ -19,14 +19,14 @@ export const Product: React.FC<ProductProps> = ({ product }) => {
           height={600}
         />
         <div className='p-5'>
-          <h5 className='mb-2 text-2xl font-bold tracking-tight text-gray-900 '>
+          <h5 className='mb-2 text-2xl font-semibold tracking-tight text-gray-900 '>
             {product.name}
           </h5>
+          <h5 className='text-3xl font-medium my-4 '>${product.price}</h5>
           <Rating
             value={product.rating}
             text={`${product.numReviews} reviews`}
           />
-          <h5>${product.price}</h5>
         </div>
       </div>
     </Link>

@@ -4,7 +4,7 @@ import { FiMenu, FiShoppingCart, FiUser } from 'react-icons/fi'
 export const Header: React.FC = () => {
   return (
     <header>
-      <nav className='px-2 py-3 bg-zinc-800 sm:px-4 '>
+      <nav className='px-2 py-3 bg-zinc-800 sm:px-4'>
         <div className='container flex flex-wrap items-center justify-between mx-auto'>
           <Link href='/' className='flex items-center '>
             <span className='self-center text-2xl font-semibold text-white uppercase cursor-pointer whitespace-nowrap'>

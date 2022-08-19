@@ -28,12 +28,12 @@ const Product: NextPage = () => {
             className='rounded-lg'
           />
           <div className='flex flex-col max-w-md gap-8'>
-            <h1 className='text-4xl '>{product.name}</h1>
+            <h1 className='text-4xl font-semibold'>{product.name}</h1>
+            <p className='text-3xl'>${product.price}</p>
             <Rating
               value={product.rating}
               text={`${product.numReviews} reviews`}
             />
-            <p className='text-xl'>${product.price}</p>
             <p>{product.description}</p>
             <p
               className={` text-2xl ${

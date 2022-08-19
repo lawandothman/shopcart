@@ -14,9 +14,11 @@ const MyApp: AppType = ({
   return (
     <SessionProvider session={session}>
       <Header />
-      <main className='container min-h-[80vh] mx-auto my-4'>
-        <Component {...pageProps} />
-      </main>
+      <div className='px-2 sm:px-4'>
+        <main className='container min-h-[80vh] mx-auto'>
+          <Component {...pageProps} />
+        </main>
+      </div>
       <Footer />
     </SessionProvider>
   )
