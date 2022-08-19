@@ -15,8 +15,7 @@ const Home: NextPage = () => {
 
   return (
     <div>
-      <h1 className='py-10 text-5xl'>Latest Products</h1>
-      <div className='flex  flex-wrap gap-8'>
+      <div className='flex py-10 justify-center flex-wrap gap-8'>
         {products?.map((product) => (
           <Product key={product.id} product={product} />
         ))}
